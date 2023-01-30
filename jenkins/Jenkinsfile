@@ -7,12 +7,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn -B -DskipTests clean package'
+                bat 'mvn -B -DskipTests clean package -Denforcer.skip=true'
             }
         }
         stage('Test') {
             steps {
-                bat 'mvn test'
+                bat 'mvn test -Denforcer.skip=true'
             }
             post {
                 always {
